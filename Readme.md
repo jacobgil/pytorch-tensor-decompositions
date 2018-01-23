@@ -7,12 +7,17 @@ It depends on [TensorLy](https://github.com/tensorly/tensorly) for performing te
 
 # Usage
 1. Train a model based on fine tuning VGG16: ``python main.py --train``
+
 There should be a dataset with two categories, with data inside the train and test folders.
+
 I used the [Kaggle Cats/Dogs dataset.](https://www.kaggle.com/c/dogs-vs-cats)
 The model is then saved into a file called "model".
+
 2. Perform a decomposition: ``python main.py --decompose``
 This saves the new model into "decomposed_model".
+
 It uses the Tucker decomposition by default. To use CP decomposition, pass --cp.
+
 3. Fine tune the decomposed model: ``python main.py --fine_tune``
 
 # References
