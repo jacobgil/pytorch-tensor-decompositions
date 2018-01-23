@@ -6,10 +6,9 @@ A blog post about this can be found [here](https://jacobgil.github.io/deeplearni
 It depends on [TensorLy](https://github.com/tensorly/tensorly) for performing tensor decompositions.
 
 # Usage
-1. Train a model based on fine tuning VGG16: ``python main.py --train``
 
+1. Train a model based on fine tuning VGG16: ``python main.py --train``.
 There should be a dataset with two categories, with data inside the train and test folders.
-
 I used the [Kaggle Cats/Dogs dataset.](https://www.kaggle.com/c/dogs-vs-cats)
 The model is then saved into a file called "model".
 
