@@ -109,7 +109,7 @@ def get_args():
 
 if __name__ == '__main__':
     args = get_args()
-    tl.set_backend('numpy')
+    tl.set_backend('pytorch')
 
     if args.train:
         model = ModifiedVGG16Model().cuda()
