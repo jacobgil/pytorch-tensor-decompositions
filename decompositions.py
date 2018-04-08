@@ -76,7 +76,7 @@ def tucker_decomposition_conv_layer(layer):
 
     # A pointwise convolution that reduces the channels from S to R3
     first_layer = torch.nn.Conv2d(in_channels=first.shape[0], \
-            out_channels=first.shape[1], kernel_size=1, \
+            out_channels=first.shape[1], kernel_size=1,
             stride=1, padding=0, dilation=layer.dilation, bias=False)
 
     # A regular 2D convolution layer with R3 input channels 
@@ -88,17 +88,15 @@ def tucker_decomposition_conv_layer(layer):
 
     # A pointwise convolution that increases the channels from R4 to T
     last_layer = torch.nn.Conv2d(in_channels=last.shape[1], \
-        out_channels=last.shape[0], kernel_size=1, stride=1, \
+        out_channels=last.shape[0], kernel_size=1, stride=1,
         padding=0, dilation=layer.dilation, bias=True)
 
     last_layer.bias.data = layer.bias.data
-
 
     first_layer.weight.data = \
         torch.transpose(first, 1, 0).unsqueeze(-1).unsqueeze(-1)
     last_layer.weight.data = last.unsqueeze(-1).unsqueeze(-1)
     core_layer.weight.data = core
-
 
     new_layers = [first_layer, core_layer, last_layer]
     return nn.Sequential(*new_layers)
